@@ -140,4 +140,3 @@ void print_to_file_entries_labels(FILE*, symbol**);
 int two_complement(int);
 int current_binary_word_is_extern_label(int);
 void change_ending_file_name(char*);
-
