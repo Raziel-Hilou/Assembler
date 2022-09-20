@@ -41,9 +41,9 @@ int macro_or_endmacro(char line[]) {
  **/
 void scan_content(FILE* fpointer,Macro** root)
  {
-    fseek(fpointer, 0, SEEK_SET);
     int n, i, content_counter = 0, content_size = 10, scan_name = 0, start_pos, end_pos, text_pos = 0, flag = 0;
     char buffer[MAX_CHARS_IN_LINE], macro_name[MAX_CHARS_IN_LINE],content[MAX_CHARS_IN_LINE];
+    fseek(fpointer, 0, SEEK_SET);
     memset(macro_name, '\0', MAX_CHARS_IN_LINE);
     memset(buffer, '\0', MAX_CHARS_IN_LINE);
     memset(content,'\0',MAX_CHARS_IN_LINE);
@@ -105,7 +105,7 @@ void scan_content(FILE* fpointer,Macro** root)
                 /* ignoring spaces*/
                 while (buffer[i] == ' ') {
                     i++;
-                    // printf("%d\n",i);//
+                    /*printf("%d\n",i);*/
                 }
 
                 /* scanning macro's name*/
@@ -181,10 +181,14 @@ FILE* rewrite_file(FILE *inputFile, Macro **head, char *fileName)
 {
     FILE *newFile;
     Macro *temp = *head;
+    Macro *check;
 
     /*Declare a temporary variable for the file name, so that we do not change the original file name for the following outPut files*/
     char tempFileName[FILENAME_MAX];
     char *finalFileName = NULL;
+    char currentLine[MAX_CHARS_IN_LINE] = {0};
+    int line_length = 0,content_flag = 0, pos=0;
+
     strcpy(tempFileName, fileName);
     change_ending_file_name(tempFileName);
 
@@ -193,15 +197,11 @@ FILE* rewrite_file(FILE *inputFile, Macro **head, char *fileName)
     finalFileName = strcat(tempFileName, ".am");
     newFile = fopen(finalFileName, "w");
 
-
-    char currentLine[MAX_CHARS_IN_LINE] = {0};
-    int line_length = 0,content_flag = 0, pos=0;
-
     /*scan line by line*/
     fseek(inputFile, 0, SEEK_SET);
     while (fgets(currentLine, MAX_CHARS_IN_LINE, inputFile) != NULL) {
         line_length = (int) strlen(currentLine);
-        Macro *check = *head;
+        check = *head;
         pos += line_length;
 
         while (1) {
