@@ -19,7 +19,7 @@ Left colum: The address of the binary word in memory.
 Right colum: The content of the binary word.
 
 2. Entries file- If labels were declared as entry in the assembly file, you will see them here.
-Note- If no labels declared as entry, this output file will not be created.
+\nNote- If no labels declared as entry, this output file will not be created.
 
 3. Externals file- If labels were declared as extern in the assembly file, you will see them here.
 Note- If no labels declared as extern, this output file will not be created.
