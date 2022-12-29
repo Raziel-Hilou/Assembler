@@ -1,6 +1,6 @@
 # Assembler
 This is a large-scale project in the C language that I wrote during my university studies.
-We were asked to write an assembler - software that receives source files in assembly language and converts it to binary and even more to the base 32 that was defined for us.
+We were asked to write an assembler - software that receives source files in assembly language and converts it to binary and even more to the base 32 that was defined for us.                                                                        
 Note: In short, the heart of the program(main function) is in file "assembler.c".
 
 --This is a document explaining how to run the program and what the output is, We will not elaborate here on how the program is carried out.--
